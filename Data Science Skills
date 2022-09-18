@@ -22,3 +22,8 @@ WHERE skill IN ('Python', 'Tableau', 'PostgreSQL')
 GROUP BY candidate_id
 HAVING COUNT(skill) = 3
 ORDER BY candidate_id;
+
+Learning insights: The columns you put on the Select Statement is what will appear on the Output,
+but the operations below the Select Statement can invoke columns not present on the select statement.
+
+Also the IN operator must use () not {}, and the IN operator is a shorthand for multiple OR conditions.
