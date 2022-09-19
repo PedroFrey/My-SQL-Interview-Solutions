@@ -1,0 +1,27 @@
+Question:
+Assume you are given the tables below about Facebook pages and page likes.
+Write a query to return the page IDs of all the Facebook pages that don't have any likes. The output should be in ascending order.
+
+My solution:
+SELECT pages.page_id
+FROM pages
+LEFT JOIN page_likes ON page_likes.page_id = pages.page_id
+WHERE page_likes.liked_date IS NULL
+ORDER BY page_id ASC
+
+
+Standart Solution:
+SELECT page_id
+FROM pages
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM page_likes AS likes
+  WHERE likes.page_id = pages.page_id);
+  
+  or 
+  
+  SELECT pages.page_id
+FROM pages
+LEFT OUTER JOIN page_likes AS likes
+  ON pages.page_id = likes.page_id
+WHERE likes.page_id IS NULL;
