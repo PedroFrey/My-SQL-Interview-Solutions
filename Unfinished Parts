@@ -1,0 +1,21 @@
+Question:
+Tesla is investigating bottlenecks in their production, and they need your help to extract the relevant data.
+Write a SQL query that determines which parts have begun the assembly process but are not yet finished.
+
+My solution:
+SELECT part
+FROM parts_assembly
+WHERE finish_date IS NULL
+GROUP BY part
+
+Standart Solution:
+
+SELECT DISTINCT part
+FROM parts_assembly
+WHERE finish_date IS NULL;
+
+
+Learning Insights: Remember to use the HAVING clause,
+it was added to SQL because the WHERE keyword cannot be used with aggregate functions.
+
+Also, The SELECT DISTINCT can be used as a group by in some situations 
